@@ -3,6 +3,22 @@ addEventListener('fetch', event => {
 
 })
 
+class AttributeRewriter {
+  element(element) {
+    // An incoming element, such as `div`
+    console.log(`Incoming element: ${element.tagName}`)
+    switch(element.n){}
+  }
+
+  comments(comment) {
+    // An incoming comment
+  }
+
+  text(text) {
+    // An incoming piece of text
+  }
+}
+
 /**
  * Respond with hello worker text
  * @param {Request} request
@@ -19,7 +35,13 @@ async function handleRequest(request) {
       return result.variants;
     });
   
-  //redirect site to random link (index is a random number between 0 and 1)
-  let index = Math.floor(Math.random() * 2);
-  return Response.redirect(linkArray[index]);
+  //grabs random link (index is a random number between 0 and 1)
+  let index = Math.floor(Math.random() * linkArray.length);
+  const link = await fetch(linkArray[index]);
+  return link;
+  //returns HTMLRewriter responce
+  //return new HTMLRewriter()
+   // .on('title', new AttributeRewriter('textContent'))
+  //  .transform(link);
+
 }
