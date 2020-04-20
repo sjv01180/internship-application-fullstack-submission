@@ -19,9 +19,6 @@ async function handleRequest(request) {
       return result.variants;
     });
   
-  //redirect site to first link
-  return Response.redirect(linkArray[0]);
-
-  //redirect site to second link
-  return Response.redirect(linkArray[1]);
+  //redirect site to random link
+  return Response.redirect(linkArray[Math.round(Math.random())]);
 }
