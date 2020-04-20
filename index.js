@@ -19,6 +19,7 @@ async function handleRequest(request) {
       return result.variants;
     });
   
-  //redirect site to random link
-  return Response.redirect(linkArray[Math.round(Math.random())]);
+  //redirect site to random link (index is a random number between 0 and 1)
+  let index = Math.floor(Math.random() * 2);
+  return Response.redirect(linkArray[index]);
 }
